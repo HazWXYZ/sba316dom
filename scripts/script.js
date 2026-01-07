@@ -1,7 +1,7 @@
 // ==================================================
 // CACHE DOM ELEMENTS
 // ==================================================
-// ✅ REQUIREMENT: Cache at least one element using getElementById (5%)
+// REQUIREMENT: Cache at least one element using getElementById (5%)
 const transactionForm = document.getElementById('transactionForm');
 const descriptionInput = document.getElementById('description');
 const amountInput = document.getElementById('amount');
@@ -11,7 +11,7 @@ const transactionList = document.getElementById('transactionList');
 const descError = document.getElementById('descError');
 const amountError = document.getElementById('amountError');
 
-// ✅ REQUIREMENT: Cache at least one element using querySelector or querySelectorAll (5%)
+// REQUIREMENT: Cache at least one element using querySelector or querySelectorAll (5%)
 const totalBalanceEl = document.querySelector('#totalBalance');
 const totalIncomeEl = document.querySelector('#totalIncome');
 const totalExpenseEl = document.querySelector('#totalExpense');
@@ -26,7 +26,7 @@ let currentFilter = 'all';
 // ==================================================
 // BOM PROPERTIES
 // ==================================================
-// ✅ REQUIREMENT: Use at least two Browser Object Model (BOM) properties or methods (3%)
+// REQUIREMENT: Use at least two Browser Object Model (BOM) properties or methods (3%)
 
 // BOM Property #1: window.location
 console.log('App running on:', window.location.href);
@@ -52,33 +52,33 @@ window.addEventListener('load', () => {
 // ==================================================
 // EVENT LISTENERS
 // ==================================================
-// ✅ REQUIREMENT: Register at least two different event listeners (10%)
+// REQUIREMENT: Register at least two different event listeners (10%)
 
 // Event Listener #1: Form submit event
 transactionForm.addEventListener('submit', handleFormSubmit);
 
 // Event Listener #2: Filter button click events
-// ✅ REQUIREMENT: Iterate over a collection of elements (10%)
+// REQUIREMENT: Iterate over a collection of elements (10%)
 filterButtons.forEach(btn => {
     btn.addEventListener('click', handleFilterClick);
 });
 
 // Event Listener #3: Input validation events for DOM-based validation
-// ✅ REQUIREMENT: DOM event-based validation (5%)
+// REQUIREMENT: DOM event-based validation (5%)
 descriptionInput.addEventListener('input', validateDescription);
 amountInput.addEventListener('input', validateAmount);
 
 // ==================================================
 // FORM VALIDATION FUNCTIONS
 // ==================================================
-// ✅ REQUIREMENT: Include at least one form with HTML attribute validation (5%)
+// REQUIREMENT: Include at least one form with HTML attribute validation (5%)
 // HTML validation attributes: required, minlength, maxlength, min, step
 
-// ✅ REQUIREMENT: Include DOM event-based validation (5%)
+// REQUIREMENT: Include DOM event-based validation (5%)
 function validateDescription(e) {
     const value = e.target.value.trim();
     if (value.length < 3 || value.length > 50) {
-        // ✅ REQUIREMENT: Modify CSS classes in response to user interaction (5%)
+        // REQUIREMENT: Modify CSS classes in response to user interaction (5%)
         descriptionInput.classList.add('error');
         descError.classList.add('show');
         return false;
@@ -149,7 +149,7 @@ function handleFilterClick(e) {
     const filter = e.target.getAttribute('data-filter');
     currentFilter = filter;
     
-    // ✅ REQUIREMENT: Modify CSS classes in response to user interaction (5%)
+    // REQUIREMENT: Modify CSS classes in response to user interaction (5%)
     // Update active button styling
     filterButtons.forEach(btn => btn.classList.remove('active'));
     e.target.classList.add('active');
@@ -173,20 +173,20 @@ function renderTransactions() {
     
     // Show empty state if no transactions
     if (filteredTransactions.length === 0) {
-        // ✅ REQUIREMENT: Create element using createElement (5%)
+        // REQUIREMENT: Create element using createElement (5%)
         const emptyDiv = document.createElement('div');
         emptyDiv.className = 'empty-state';
-        // ✅ REQUIREMENT: Modify innerHTML (10%)
+        // REQUIREMENT: Modify innerHTML (10%)
         emptyDiv.innerHTML = '<p>No transactions to display.</p>';
-        // ✅ REQUIREMENT: Use appendChild (5%)
+        // REQUIREMENT: Use appendChild (5%)
         transactionList.appendChild(emptyDiv);
         return;
     }
     
-    // ✅ REQUIREMENT: Use DocumentFragment for templated content (2%)
+    // REQUIREMENT: Use DocumentFragment for templated content (2%)
     const fragment = document.createDocumentFragment();
     
-    // ✅ REQUIREMENT: Iterate over collection of elements (10%)
+    // REQUIREMENT: Iterate over collection of elements (10%)
     filteredTransactions.forEach(transaction => {
         const li = createTransactionElement(transaction);
         fragment.appendChild(li);
@@ -195,13 +195,13 @@ function renderTransactions() {
     transactionList.appendChild(fragment);
 }
 
-// ✅ REQUIREMENT: Multiple requirements demonstrated in this function
+// REQUIREMENT: Multiple requirements demonstrated in this function
 function createTransactionElement(transaction) {
-    // ✅ REQUIREMENT: Create element using createElement (5%)
+    // REQUIREMENT: Create element using createElement (5%)
     const li = document.createElement('li');
     li.className = `transaction-item ${transaction.type}`;
     
-    // ✅ REQUIREMENT: Modify at least one attribute (3%)
+    // REQUIREMENT: Modify at least one attribute (3%)
     li.setAttribute('data-id', transaction.id);
     
     // Create transaction details div
@@ -210,14 +210,14 @@ function createTransactionElement(transaction) {
     
     const nameDiv = document.createElement('div');
     nameDiv.className = 'transaction-name';
-    // ✅ REQUIREMENT: Modify text content (10%)
+    // REQUIREMENT: Modify text content (10%)
     nameDiv.textContent = transaction.description;
     
     const categoryDiv = document.createElement('div');
     categoryDiv.className = 'transaction-category';
     categoryDiv.textContent = `${transaction.category} • ${transaction.date}`;
     
-    // ✅ REQUIREMENT: Use appendChild to add elements (5%)
+    // REQUIREMENT: Use appendChild to add elements (5%)
     detailsDiv.appendChild(nameDiv);
     detailsDiv.appendChild(categoryDiv);
     
@@ -233,7 +233,7 @@ function createTransactionElement(transaction) {
     deleteBtn.textContent = 'Delete';
     deleteBtn.onclick = () => deleteTransaction(transaction.id);
     
-    // ✅ REQUIREMENT: Parent-child relationships demonstrated
+    // REQUIREMENT: Parent-child relationships demonstrated
     li.appendChild(detailsDiv);
     li.appendChild(amountSpan);
     li.appendChild(deleteBtn);
@@ -268,12 +268,12 @@ function updateBalances() {
         
     const balance = income - expense;
     
-    // ✅ REQUIREMENT: Modify text content in response to user interaction (10%)
+    // REQUIREMENT: Modify text content in response to user interaction (10%)
     totalIncomeEl.textContent = `$${income.toFixed(2)}`;
     totalExpenseEl.textContent = `$${expense.toFixed(2)}`;
     totalBalanceEl.textContent = `$${balance.toFixed(2)}`;
     
-    // ✅ REQUIREMENT: Modify style property in response to user interaction (5%)
+    // REQUIREMENT: Modify style property in response to user interaction (5%)
     // Change balance color based on positive/negative/zero
     if (balance < 0) {
         totalBalanceEl.style.color = '#dc3545'; // Red for negative
@@ -287,7 +287,7 @@ function updateBalances() {
 // ==================================================
 // PARENT-CHILD-SIBLING NAVIGATION DEMONSTRATION
 // ==================================================
-// ✅ REQUIREMENT: Use parent-child-sibling relationship to navigate between elements (5%)
+// REQUIREMENT: Use parent-child-sibling relationship to navigate between elements (5%)
 function demonstrateNavigation() {
     const form = document.getElementById('transactionForm');
     
