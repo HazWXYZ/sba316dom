@@ -1,9 +1,9 @@
 # SBA 316: The Document Object Model
 
-## Step 1: Idea for website: Budget tracker
--It should have categories
--Calculates income and expenses
--Turns red when over budget/or another indicator
+## Idea for website: Budget tracker
+-Add transactions and calculate total income minus expenses
+-Delete transactions easily
+-Sort transactions by type
 
 
 
